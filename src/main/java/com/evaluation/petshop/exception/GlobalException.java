@@ -15,6 +15,7 @@ public class GlobalException extends ResponseEntityExceptionHandler{
 		responseStructure.setMessage(dataNotFoundException.getMessage());
 		responseStructure.setData("Data Not Found");
 		
+		
 		return new ResponseEntity<>(responseStructure,HttpStatus.NOT_FOUND);
 		
 	}
