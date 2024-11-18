@@ -22,20 +22,18 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "transaction_id")
 	private int transactionId;
-	@Column(name = "transcation_date")
-    private String transcationDate;
+	@Column(name = "transaction_date")
+    private String transactionDate;
     private double amount;
     
     //used to specify how an enum type is mapped to a database column
     @Enumerated(EnumType.STRING)
+    @Column(name="transaction_status")
     private TransactionStatus transactionStatus;
-    
-    
     
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    
     
     @ManyToOne
     @JoinColumn(name = "pet_id")

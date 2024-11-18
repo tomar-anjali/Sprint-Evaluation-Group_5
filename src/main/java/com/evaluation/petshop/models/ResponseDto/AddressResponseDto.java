@@ -1,9 +1,10 @@
-package com.evaluation.petshop.models.dto;
+package com.evaluation.petshop.models.ResponseDto;
 
 import lombok.Data;
 
 @Data
-public class AddressDto {
+public class AddressResponseDto {
+	private int addressId;
 	private String street;
 	private String city;
 	private String state;
