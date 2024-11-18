@@ -22,7 +22,8 @@ public class Supplier {
 	@Column(name = "supplier_id")
 	private int supplierId;
 	private String name;
-	private String contact_person;
+	@Column(name="contact_person")
+	private String contactPerson;
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	private String email;

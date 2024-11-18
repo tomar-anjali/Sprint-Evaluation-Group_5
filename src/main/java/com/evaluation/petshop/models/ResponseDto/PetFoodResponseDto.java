@@ -1,9 +1,10 @@
-package com.evaluation.petshop.models.dto;
+package com.evaluation.petshop.models.ResponseDto;
 
 import lombok.Data;
 
 @Data
-public class PetFoodDto {
+public class PetFoodResponseDto {
+	private int foodId;
 	private String name;
 	private String brand;
 	private String type;

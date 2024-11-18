@@ -37,7 +37,6 @@ public class Employee {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	
 	@ManyToMany
 	@JoinTable(name = "employee_pet_relationship", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
 	private List<Pet> pets;
