@@ -1,5 +1,12 @@
 package com.evaluation.petshop.service;
 
+<<<<<<< HEAD
+
+
+
+public interface VaccinationService {
+	
+=======
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -14,5 +21,6 @@ public interface VaccinationService {
 	ResponseEntity<ResponseStructure<VaccinationResponseDto>> getVaccinationById(int id);
 	ResponseEntity<ResponseStructure<VaccinationResponseDto>> updateVaccinationById(int id,
 			VaccinationDto vaccinationDto);
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 }

@@ -1,5 +1,11 @@
 package com.evaluation.petshop.controller;
 
+<<<<<<< HEAD
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+=======
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +21,12 @@ import com.evaluation.petshop.models.ResponseDto.VaccinationResponseDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.models.dto.VaccinationDto;
 import com.evaluation.petshop.service.VaccinationService;
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 @RequestMapping("/vaccinations")
 @RestController
 public class VaccinationController {
+	
 
 	@Autowired
 	private VaccinationService vaccinationService;

@@ -16,8 +16,12 @@ import com.evaluation.petshop.service.CustomerService;
 
 @Service
 public class CustomerServiceImplementation implements CustomerService {
+<<<<<<< HEAD
+	
+=======
 	@Autowired
 	private CustomerDao customerDao;
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 	@Override
 	public ResponseEntity<ResponseStructure<CustomerResponseDto>> getCustomerByFirstAndLastName(String firstName,
