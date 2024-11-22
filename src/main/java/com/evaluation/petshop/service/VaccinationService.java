@@ -14,4 +14,6 @@ public interface VaccinationService {
 	ResponseEntity<ResponseStructure<VaccinationResponseDto>> updateVaccinationById(int id,
 			VaccinationDto vaccinationDto);
 
+	ResponseEntity<ResponseStructure<VaccinationResponseDto>> saveVaccination(VaccinationDto vaccinationDto);
+
 }
