@@ -20,6 +20,7 @@ import com.evaluation.petshop.service.GroomingServiceService;
 @RequestMapping("/services")
 @RestController
 public class GroomingServiceController {
+<<<<<<< HEAD
 	@Autowired
 	private GroomingServiceService groomingServiceService;
 	@GetMapping()
@@ -43,4 +44,7 @@ public class GroomingServiceController {
     public ResponseEntity<ResponseStructure<GroomingServiceDto>> addGroomingService(@RequestBody GroomingServiceDto groomingServiceDto){
     	   return groomingServiceService.addGroomingService(groomingServiceDto);
     }
+=======
+	
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 }

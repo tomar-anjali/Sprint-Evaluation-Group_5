@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.evaluation.petshop.dao.GroomingServiceDao;
+<<<<<<< HEAD
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.entity.GroomingService;
 import com.evaluation.petshop.repository.GroomingServiceRepository;
@@ -52,5 +52,10 @@ public class GroomingServiceDaoImplementation implements GroomingServiceDao{
 	}
 	
 	
+=======
+
+@Repository
+public class GroomingServiceDaoImplementation implements GroomingServiceDao {
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 }

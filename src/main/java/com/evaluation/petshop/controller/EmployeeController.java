@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import com.evaluation.petshop.models.ResponseDto.EmployeeResponseDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.service.EmployeeService;
@@ -23,4 +24,10 @@ public class EmployeeController {
 	}
 	
 
+=======
+@RequestMapping("/employees")
+@RestController
+public class EmployeeController {
+	
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 }

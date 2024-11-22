@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 
 import com.evaluation.petshop.dao.GroomingServiceDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
@@ -126,5 +127,11 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
     }
 
 
+=======
+import com.evaluation.petshop.service.GroomingServiceService;
+
+@Service
+public class GroomingServiceServiceImplementation implements GroomingServiceService {
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 }

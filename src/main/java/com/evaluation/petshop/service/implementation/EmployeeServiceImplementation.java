@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 
 import com.evaluation.petshop.dao.EmployeeDao;
 import com.evaluation.petshop.models.ResponseDto.AddressResponseDto;
@@ -55,5 +56,11 @@ public class EmployeeServiceImplementation implements EmployeeService{
 			return new ResponseEntity<>(response, HttpStatus.FOUND);
 				
 	}
+=======
+import com.evaluation.petshop.service.EmployeeService;
+
+@Service
+public class EmployeeServiceImplementation implements EmployeeService {
+>>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 }
