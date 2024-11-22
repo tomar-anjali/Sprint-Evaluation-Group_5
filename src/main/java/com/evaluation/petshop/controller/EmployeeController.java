@@ -20,6 +20,4 @@ public class EmployeeController {
 		return employeeService.getAllEmployees();
 	}
 
-
-
 }

@@ -15,10 +15,8 @@ import com.evaluation.petshop.service.VaccinationService;
 
 @Service
 public class VaccinationServiceImplementation implements VaccinationService {
-
 	@Autowired
 	VaccinationDao vaccinationDao;
-
 	@Override
 	public ResponseEntity<ResponseStructure<List<VaccinationResponseDto>>> getAllVaccinations() {
 		List<Vaccination> vaccinationsList = vaccinationDao.getAllVaccinations();
@@ -60,7 +58,6 @@ public class VaccinationServiceImplementation implements VaccinationService {
 	public ResponseEntity<ResponseStructure<VaccinationResponseDto>> updateVaccinationById(int id,
 			VaccinationDto vaccinationDto) {
 		Vaccination existingVaccination = vaccinationDao.getVaccinationById(id);
-
 		existingVaccination.setName(vaccinationDto.getName());
 		existingVaccination.setDescription(vaccinationDto.getDescription());
 		existingVaccination.setPrice(vaccinationDto.getPrice());

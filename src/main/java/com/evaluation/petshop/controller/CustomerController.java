@@ -1,6 +1,4 @@
 package com.evaluation.petshop.controller;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,24 +21,28 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-
 	@GetMapping("/{customerId}")
-	public ResponseEntity<ResponseStructure<CustomerResponseDto>> getCustomerById(@PathVariable int customerId){
+	public ResponseEntity<ResponseStructure<CustomerResponseDto>> getCustomerById(@PathVariable int customerId) {
 		return customerService.getCustomerById(customerId);
 	}
+
 	@PutMapping("/update/{customerId}")
-	public ResponseEntity<ResponseStructure<CustomerResponseDto>> updateCustomer(@PathVariable int customerId,@RequestBody CustomerDto customerDto){
-		return customerService.updateCustomer(customerId,customerDto);
+	public ResponseEntity<ResponseStructure<CustomerResponseDto>> updateCustomer(@PathVariable int customerId,
+			@RequestBody CustomerDto customerDto) {
+		return customerService.updateCustomer(customerId, customerDto);
 	}
+
 	@PostMapping("/save")
-	public ResponseEntity<ResponseStructure<CustomerDto>> saveCustomer(@RequestBody CustomerDto customerDto){
+	public ResponseEntity<ResponseStructure<CustomerDto>> saveCustomer(@RequestBody CustomerDto customerDto) {
 		return customerService.saveCustomer(customerDto);
 	}
+
 	@GetMapping("/name/{first_name}/{last_name}")
 	public ResponseEntity<ResponseStructure<CustomerResponseDto>> getCustomerByFirstAndLastName(
 			@PathVariable String first_name, @PathVariable String last_name) {
 		return customerService.getCustomerByFirstAndLastName(first_name, last_name);
 	}
+
 	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<CustomerResponseDto>>> getAllCustomer() {
 		return customerService.getAllCustomer();

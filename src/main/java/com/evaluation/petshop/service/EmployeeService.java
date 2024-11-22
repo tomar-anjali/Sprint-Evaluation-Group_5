@@ -7,5 +7,4 @@ import com.evaluation.petshop.models.dto.ResponseStructure;
 
 public interface EmployeeService {
 	ResponseEntity<ResponseStructure<List<EmployeeResponseDto>>> getAllEmployees();
-
 }

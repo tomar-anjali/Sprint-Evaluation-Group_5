@@ -37,7 +37,6 @@ public class GroomingServiceDaoImplementation implements GroomingServiceDao {
 			groomingService.setAvailable(updatedGroomingService.isAvailable());
 
 			return groomingServiceRepository.save(groomingService);
-
 		} else {
 			throw new DataNotFoundException("Grooming Service found for update");
 		}

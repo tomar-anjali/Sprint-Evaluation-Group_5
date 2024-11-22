@@ -1,13 +1,7 @@
 package com.evaluation.petshop.dao.implementation;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import org.springframework.stereotype.Repository;
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.evaluation.petshop.dao.CustomerDao;
@@ -17,7 +11,6 @@ import com.evaluation.petshop.repository.CustomerRepository;
 
 @Repository
 public class CustomerDaoImplementation implements CustomerDao {
-
 	@Autowired
 	private CustomerRepository customerRepository;
 

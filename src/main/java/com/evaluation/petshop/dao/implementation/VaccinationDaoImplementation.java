@@ -19,7 +19,6 @@ public class VaccinationDaoImplementation implements VaccinationDao {
 	public List<Vaccination> getAllVaccinations() {
 		return vaccinationRepository.findAll();
 	}
-
 	@Override
 	public Vaccination getVaccinationById(int id) {
 		Optional<Vaccination> res = vaccinationRepository.findById(id);

@@ -36,7 +36,6 @@ public class PetFoodServiceImplementation implements PetFoodService {
 		dto.setQuantity(petFood.getQuantity());
 		dto.setType(petFood.getType());
 		// Map other fields
-
 		ResponseStructure<PetFoodDto> response = new ResponseStructure<>();
 		response.setData(dto);
 		response.setMessage("Pet food fetched successfully");
