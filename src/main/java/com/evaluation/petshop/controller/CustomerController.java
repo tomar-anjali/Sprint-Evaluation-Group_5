@@ -15,12 +15,8 @@ import com.evaluation.petshop.service.CustomerService;
 @RequestMapping("/customers")
 @RestController
 public class CustomerController {
-<<<<<<< HEAD
-	
-=======
 	@Autowired
 	private CustomerService customerService;
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 	@GetMapping("/name/{first_name}/{last_name}")
 	public ResponseEntity<ResponseStructure<CustomerResponseDto>> getCustomerByFirstAndLastName(
