@@ -1,5 +1,9 @@
 package com.evaluation.petshop.dao;
 
-public interface TransactionDao {
+import java.util.List;
 
+import com.evaluation.petshop.models.entity.Transaction;
+
+public interface TransactionDao {
+	List<Transaction> getAllTransactionList();
 }
