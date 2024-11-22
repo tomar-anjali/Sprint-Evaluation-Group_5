@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.evaluation.petshop.models.ResponseDto.VaccinationResponseDto;
@@ -36,4 +37,9 @@ public class VaccinationController {
 			@RequestBody VaccinationDto vaccinationDto) {
 		return vaccinationService.updateVaccinationById(id, vaccinationDto);
 	}
+	
+	@PostMapping("/save")
+    public ResponseEntity<ResponseStructure<VaccinationResponseDto>> saveVaccination(@RequestBody VaccinationDto vaccinationDto) {
+        return vaccinationService.saveVaccination(vaccinationDto);
+    }
 }
