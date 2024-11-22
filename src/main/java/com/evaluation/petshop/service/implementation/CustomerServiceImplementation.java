@@ -1,11 +1,7 @@
 package com.evaluation.petshop.service.implementation;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 import java.util.stream.Collectors;
-
->>>>>>> 416241c594739576fb695a8abe640a5f912890a8
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +17,6 @@ import com.evaluation.petshop.service.CustomerService;
 @Service
 public class CustomerServiceImplementation implements CustomerService {
 	@Autowired
-<<<<<<< HEAD
 	private CustomerDao customerDao;
 
 	@Override
@@ -37,7 +32,6 @@ public class CustomerServiceImplementation implements CustomerService {
 			addressResponseDto.setState(customer.getAddress().getState());
 			addressResponseDto.setZipCode(customer.getAddress().getZipCode());
 		}
-
 		CustomerResponseDto customerResponseDto = new CustomerResponseDto();
 		customerResponseDto.setFirstName(customer.getFirstName());
 		customerResponseDto.setLastName(customer.getLastName());
@@ -45,42 +39,39 @@ public class CustomerServiceImplementation implements CustomerService {
 		customerResponseDto.setCustomerId(customer.getCustomerId());
 		customerResponseDto.setPhoneNumber(customer.getPhoneNumber());
 		customerResponseDto.setAddress(addressResponseDto);
-
 		ResponseStructure<CustomerResponseDto> response = new ResponseStructure<>();
 		response.setStatusCode(HttpStatus.FOUND.value());
 		response.setMessage("Success");
 		response.setData(customerResponseDto);
-
 		return new ResponseEntity<>(response, HttpStatus.FOUND);
-=======
-	CustomerDao customerDao;
+	}
+
 	@Override
 	public ResponseEntity<ResponseStructure<List<CustomerResponseDto>>> getAllCustomer() {
-		 List<Customer> customers= customerDao.getAllCustomer();
-		 
-		 List<CustomerResponseDto> customerResponseDtos=customers.stream().map(data->{
-			 AddressResponseDto addressResponseDto=new AddressResponseDto();
-			 if(data.getAddress()!=null) {
-				 addressResponseDto.setAddressId(data.getAddress().getAddressId());
-				 addressResponseDto.setStreet(data.getAddress().getStreet());
-				 addressResponseDto.setCity(data.getAddress().getCity());
-				 addressResponseDto.setState(data.getAddress().getState());
-				 addressResponseDto.setZipCode(data.getAddress().getZipCode());
-			 }
-			 CustomerResponseDto dtos=new CustomerResponseDto();
-			 dtos.setFirstName(data.getFirstName());
-			 dtos.setLastName(data.getLastName());
-			 dtos.setEmail(data.getEmail());
-			 dtos.setPhoneNumber(data.getPhoneNumber());
-			 dtos.setAddress(addressResponseDto);
-			 return dtos;
-		 }).collect(Collectors.toList());
-		 
-		 ResponseStructure<List<CustomerResponseDto>>  responseStructure=new ResponseStructure<>();
-		 responseStructure.setStatusCode(HttpStatus.FOUND.value());
-		 responseStructure.setMessage("Found");
-		 responseStructure.setData(customerResponseDtos);
-		return new ResponseEntity<ResponseStructure<List<CustomerResponseDto>>>(responseStructure,HttpStatus.FOUND);
->>>>>>> 416241c594739576fb695a8abe640a5f912890a8
+		List<Customer> customers = customerDao.getAllCustomer();
+
+		List<CustomerResponseDto> customerResponseDtos = customers.stream().map(data -> {
+			AddressResponseDto addressResponseDto = new AddressResponseDto();
+			if (data.getAddress() != null) {
+				addressResponseDto.setAddressId(data.getAddress().getAddressId());
+				addressResponseDto.setStreet(data.getAddress().getStreet());
+				addressResponseDto.setCity(data.getAddress().getCity());
+				addressResponseDto.setState(data.getAddress().getState());
+				addressResponseDto.setZipCode(data.getAddress().getZipCode());
+			}
+			CustomerResponseDto dtos = new CustomerResponseDto();
+			dtos.setFirstName(data.getFirstName());
+			dtos.setLastName(data.getLastName());
+			dtos.setEmail(data.getEmail());
+			dtos.setPhoneNumber(data.getPhoneNumber());
+			dtos.setAddress(addressResponseDto);
+			return dtos;
+		}).collect(Collectors.toList());
+
+		ResponseStructure<List<CustomerResponseDto>> responseStructure = new ResponseStructure<>();
+		responseStructure.setStatusCode(HttpStatus.FOUND.value());
+		responseStructure.setMessage("Found");
+		responseStructure.setData(customerResponseDtos);
+		return new ResponseEntity<ResponseStructure<List<CustomerResponseDto>>>(responseStructure, HttpStatus.FOUND);
 	}
 }

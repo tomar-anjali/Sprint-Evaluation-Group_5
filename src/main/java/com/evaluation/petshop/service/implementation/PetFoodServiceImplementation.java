@@ -19,10 +19,6 @@ public class PetFoodServiceImplementation implements PetFoodService {
 	@Autowired
 	private PetFoodDao petFoodDao;
 
-<<<<<<< HEAD
-	@Autowired
-	private PetFoodDao petFoodDao;
-
 	@Override
 	public ResponseEntity<ResponseStructure<PetFoodResponseDto>> getPetFoodByFoodId(int foodId) {
 		PetFood petFood = petFoodDao.getPetFoodByFoodId(foodId);
@@ -41,52 +37,28 @@ public class PetFoodServiceImplementation implements PetFoodService {
 
 		return new ResponseEntity<>(response, HttpStatus.FOUND);
 	}
-	
+
 	@Override
 	public ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>> getAllPetFood() {
 		List<PetFood> petFood = petFoodDao.getAllPetFood();
-	
-			// Map PetFood entities to DTOs
-			List<PetFoodResponseDto> petFoodResponseDtos = petFood.stream().map(petFoods -> {
-			
-				
-				PetFoodResponseDto petFoodResponsedto = new PetFoodResponseDto();
-				petFoodResponsedto.setFoodId(petFoods.getFoodId());
-				petFoodResponsedto.setBrand(petFoods.getBrand());
-				petFoodResponsedto.setName(petFoods.getName());
-				petFoodResponsedto.setPrice(petFoods.getPrice());
-				petFoodResponsedto.setQuantity(petFoods.getQuantity());
-				petFoodResponsedto.setType(petFoods.getType());
-				return petFoodResponsedto;
-			}).collect(Collectors.toList());
 
-			ResponseStructure<List<PetFoodResponseDto>> response = new ResponseStructure<>();
-			response.setStatusCode(HttpStatus.FOUND.value());
-			response.setMessage("Success");
-			response.setData(petFoodResponseDtos);
-
-			return new ResponseEntity<>(response, HttpStatus.FOUND);
-
-=======
-	@Override
-	public ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>> getAllPetFood() {
-		List<PetFood> foods=petFoodDao.getAllPetFood();
-		
-		List<PetFoodResponseDto> petFoodResponseDtos=foods.stream().map(data->{
-			PetFoodResponseDto dto=new PetFoodResponseDto();
-			dto.setName(data.getName());
-			dto.setBrand(data.getBrand());
-			dto.setPrice(data.getPrice());
-			dto.setQuantity(data.getQuantity());
-			dto.setType(data.getType());
-			return dto;
+		// Map PetFood entities to DTOs
+		List<PetFoodResponseDto> petFoodResponseDtos = petFood.stream().map(petFoods -> {
+			PetFoodResponseDto petFoodResponsedto = new PetFoodResponseDto();
+			petFoodResponsedto.setFoodId(petFoods.getFoodId());
+			petFoodResponsedto.setBrand(petFoods.getBrand());
+			petFoodResponsedto.setName(petFoods.getName());
+			petFoodResponsedto.setPrice(petFoods.getPrice());
+			petFoodResponsedto.setQuantity(petFoods.getQuantity());
+			petFoodResponsedto.setType(petFoods.getType());
+			return petFoodResponsedto;
 		}).collect(Collectors.toList());
-		
-		ResponseStructure<List<PetFoodResponseDto>> responseStructure=new ResponseStructure<>();
-		responseStructure.setStatusCode(HttpStatus.FOUND.value());
-		responseStructure.setMessage("Found");
-		responseStructure.setData(petFoodResponseDtos);
-		return new ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>>(responseStructure, HttpStatus.FOUND);
->>>>>>> 416241c594739576fb695a8abe640a5f912890a8
+
+		ResponseStructure<List<PetFoodResponseDto>> response = new ResponseStructure<>();
+		response.setStatusCode(HttpStatus.FOUND.value());
+		response.setMessage("Success");
+		response.setData(petFoodResponseDtos);
+
+		return new ResponseEntity<>(response, HttpStatus.FOUND);
 	}
 }
