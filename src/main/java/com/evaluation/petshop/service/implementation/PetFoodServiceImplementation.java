@@ -16,7 +16,10 @@ import com.evaluation.petshop.service.PetFoodService;
 
 @Service
 public class PetFoodServiceImplementation implements PetFoodService {
+	@Autowired
+	private PetFoodDao petFoodDao;
 
+<<<<<<< HEAD
 	@Autowired
 	private PetFoodDao petFoodDao;
 
@@ -64,5 +67,26 @@ public class PetFoodServiceImplementation implements PetFoodService {
 
 			return new ResponseEntity<>(response, HttpStatus.FOUND);
 
+=======
+	@Override
+	public ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>> getAllPetFood() {
+		List<PetFood> foods=petFoodDao.getAllPetFood();
+		
+		List<PetFoodResponseDto> petFoodResponseDtos=foods.stream().map(data->{
+			PetFoodResponseDto dto=new PetFoodResponseDto();
+			dto.setName(data.getName());
+			dto.setBrand(data.getBrand());
+			dto.setPrice(data.getPrice());
+			dto.setQuantity(data.getQuantity());
+			dto.setType(data.getType());
+			return dto;
+		}).collect(Collectors.toList());
+		
+		ResponseStructure<List<PetFoodResponseDto>> responseStructure=new ResponseStructure<>();
+		responseStructure.setStatusCode(HttpStatus.FOUND.value());
+		responseStructure.setMessage("Found");
+		responseStructure.setData(petFoodResponseDtos);
+		return new ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>>(responseStructure, HttpStatus.FOUND);
+>>>>>>> 416241c594739576fb695a8abe640a5f912890a8
 	}
 }
