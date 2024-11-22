@@ -13,6 +13,8 @@ import com.evaluation.petshop.models.entity.PetFood;
 import com.evaluation.petshop.repository.PetFoodRepository;
 import com.evaluation.petshop.dao.PetFoodDao;
 import com.evaluation.petshop.models.ResponseDto.PetFoodResponseDto;
+import com.evaluation.petshop.models.dto.ResponseStructure;
+import com.evaluation.petshop.models.entity.PetFood;
 import com.evaluation.petshop.service.PetFoodService;
 
 @Service

@@ -10,6 +10,7 @@ public interface VaccinationService {
 	ResponseEntity<ResponseStructure<List<VaccinationResponseDto>>> getAllVaccinations();
 
 	ResponseEntity<ResponseStructure<VaccinationResponseDto>> getVaccinationById(int id);
+
 	ResponseEntity<ResponseStructure<VaccinationResponseDto>> updateVaccinationById(int id,
 			VaccinationDto vaccinationDto);
 

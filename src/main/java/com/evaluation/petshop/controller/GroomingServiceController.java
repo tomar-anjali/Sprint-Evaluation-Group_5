@@ -20,25 +20,28 @@ import com.evaluation.petshop.service.GroomingServiceService;
 public class GroomingServiceController {
 	@Autowired
 	private GroomingServiceService groomingServiceService;
+
 	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {
-		return groomingServiceService.getAllGroomingService(); 
+		return groomingServiceService.getAllGroomingService();
 	}
-	
+
 	@GetMapping("/{serviceId}")
-	public ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> getGroomingServiceById(@PathVariable int serviceId) {
-	    return groomingServiceService.getGroomingServiceById(serviceId);
+	public ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> getGroomingServiceById(
+			@PathVariable int serviceId) {
+		return groomingServiceService.getGroomingServiceById(serviceId);
 	}
 
 	@PutMapping("/update/{serviceId}")
 	public ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> updateGroomingService(
-	    @PathVariable int serviceId, 
-	    @RequestBody GroomingServiceResponseDto groomingServiceResponseDto) { 
-	    return groomingServiceService.updateGroomingService(serviceId, groomingServiceResponseDto);
+			@PathVariable int serviceId, @RequestBody GroomingServiceResponseDto groomingServiceResponseDto) {
+		return groomingServiceService.updateGroomingService(serviceId, groomingServiceResponseDto);
 	}
 
-    @PostMapping("/add")
-    public ResponseEntity<ResponseStructure<GroomingServiceDto>> addGroomingService(@RequestBody GroomingServiceDto groomingServiceDto){
-    	   return groomingServiceService.addGroomingService(groomingServiceDto);
-    }
+	@PostMapping("/add")
+	public ResponseEntity<ResponseStructure<GroomingServiceDto>> addGroomingService(
+			@RequestBody GroomingServiceDto groomingServiceDto) {
+		return groomingServiceService.addGroomingService(groomingServiceDto);
+	}
+
 }

@@ -11,9 +11,10 @@ import com.evaluation.petshop.repository.VaccinationRepository;
 
 @Repository
 public class VaccinationDaoImplementation implements VaccinationDao {
+
 	@Autowired
 	VaccinationRepository vaccinationRepository;
-	
+
 	@Override
 	public List<Vaccination> getAllVaccinations() {
 		return vaccinationRepository.findAll();
@@ -22,12 +23,13 @@ public class VaccinationDaoImplementation implements VaccinationDao {
 	public Vaccination getVaccinationById(int id) {
 		Optional<Vaccination> res = vaccinationRepository.findById(id);
 		if (res.isEmpty()) {
-		    throw new DataNotFoundException("Validation failed");
+			throw new DataNotFoundException("Validation failed");
 		}
 		return res.get();
 	}
+
 	@Override
-    public Vaccination saveVaccination(Vaccination vaccination) {
-        return vaccinationRepository.save(vaccination);
-    }
+	public Vaccination saveVaccination(Vaccination vaccination) {
+		return vaccinationRepository.save(vaccination);
+	}
 }
