@@ -1,58 +1,46 @@
 package com.evaluation.petshop.service.implementation;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 import java.util.stream.Collectors;
-
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-<<<<<<< HEAD
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.dto.PetFoodDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.models.entity.PetFood;
 import com.evaluation.petshop.repository.PetFoodRepository;
-=======
 import com.evaluation.petshop.dao.PetFoodDao;
 import com.evaluation.petshop.models.ResponseDto.PetFoodResponseDto;
-import com.evaluation.petshop.models.dto.ResponseStructure;
-import com.evaluation.petshop.models.entity.PetFood;
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 import com.evaluation.petshop.service.PetFoodService;
 
 @Service
 public class PetFoodServiceImplementation implements PetFoodService {
 	@Autowired
-<<<<<<< HEAD
-    private PetFoodRepository petFoodRepository;
-    @Override
-    public ResponseEntity<ResponseStructure<PetFoodDto>> getPetFoodByFoodName(String foodName) {
-        PetFood petFood = petFoodRepository.findByFoodName(foodName)
-                .orElseThrow(() -> new DataNotFoundException("Validation failed"));
-
-        PetFoodDto dto = new PetFoodDto();
-        dto.setName(petFood.getName());
-        dto.setPrice(petFood.getPrice());
-        dto.setBrand(petFood.getBrand());
-        dto.setQuantity(petFood.getQuantity());
-        dto.setType(petFood.getType());
-        // Map other fields
-
-        ResponseStructure<PetFoodDto> response = new ResponseStructure<>();
-        response.setData(dto);
-        response.setMessage("Pet food fetched successfully");
-        response.setStatusCode(HttpStatus.OK.value());
-
-        return ResponseEntity.ok(response);
-    }
-=======
+	private PetFoodRepository petFoodRepository;
+	@Autowired
 	private PetFoodDao petFoodDao;
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
+
+	@Override
+	public ResponseEntity<ResponseStructure<PetFoodDto>> getPetFoodByFoodName(String foodName) {
+		PetFood petFood = petFoodRepository.findByFoodName(foodName)
+				.orElseThrow(() -> new DataNotFoundException("Validation failed"));
+
+		PetFoodDto dto = new PetFoodDto();
+		dto.setName(petFood.getName());
+		dto.setPrice(petFood.getPrice());
+		dto.setBrand(petFood.getBrand());
+		dto.setQuantity(petFood.getQuantity());
+		dto.setType(petFood.getType());
+		// Map other fields
+		ResponseStructure<PetFoodDto> response = new ResponseStructure<>();
+		response.setData(dto);
+		response.setMessage("Pet food fetched successfully");
+		response.setStatusCode(HttpStatus.OK.value());
+
+		return ResponseEntity.ok(response);
+	}
 
 	@Override
 	public ResponseEntity<ResponseStructure<PetFoodResponseDto>> getPetFoodByFoodId(int foodId) {

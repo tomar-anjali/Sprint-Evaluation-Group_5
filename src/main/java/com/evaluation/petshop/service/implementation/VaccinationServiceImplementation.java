@@ -1,15 +1,10 @@
 package com.evaluation.petshop.service.implementation;
 
-<<<<<<< HEAD
-
-=======
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 import org.springframework.stereotype.Service;
 
 import com.evaluation.petshop.dao.VaccinationDao;
@@ -21,9 +16,6 @@ import com.evaluation.petshop.service.VaccinationService;
 
 @Service
 public class VaccinationServiceImplementation implements VaccinationService {
-<<<<<<< HEAD
-	
-=======
 	@Autowired
 	VaccinationDao vaccinationDao;
 	@Override
@@ -65,8 +57,6 @@ public class VaccinationServiceImplementation implements VaccinationService {
 	public ResponseEntity<ResponseStructure<VaccinationResponseDto>> updateVaccinationById(int id,
 			VaccinationDto vaccinationDto) {
 		Vaccination existingVaccination = vaccinationDao.getVaccinationById(id);
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
-
 		existingVaccination.setName(vaccinationDto.getName());
 		existingVaccination.setDescription(vaccinationDto.getDescription());
 		existingVaccination.setPrice(vaccinationDto.getPrice());

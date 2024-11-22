@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.evaluation.petshop.dao.CustomerDao;
 import com.evaluation.petshop.models.ResponseDto.AddressResponseDto;
 import com.evaluation.petshop.models.ResponseDto.CustomerResponseDto;
@@ -16,12 +15,8 @@ import com.evaluation.petshop.service.CustomerService;
 
 @Service
 public class CustomerServiceImplementation implements CustomerService {
-<<<<<<< HEAD
-	
-=======
 	@Autowired
 	private CustomerDao customerDao;
->>>>>>> 7c37c413061b866d72f9aae30b927371bed9e31b
 
 	@Override
 	public ResponseEntity<ResponseStructure<CustomerResponseDto>> getCustomerByFirstAndLastName(String firstName,
