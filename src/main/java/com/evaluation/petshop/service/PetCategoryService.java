@@ -1,13 +1,5 @@
 package com.evaluation.petshop.service;
 
-<<<<<<< HEAD
-
-
-public interface PetCategoryService {
-
-
-
-=======
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import com.evaluation.petshop.models.ResponseDto.PetCategoryResponseDto;
@@ -23,5 +15,4 @@ public interface PetCategoryService {
 			PetCategoryResponseDto petCategorydto);
 
 	ResponseEntity<ResponseStructure<PetCategoryDto>> savePetCategory(PetCategoryDto petCategoryDto);
->>>>>>> f479527e70758d1e07580cedb64cdd81f24dd895
 }

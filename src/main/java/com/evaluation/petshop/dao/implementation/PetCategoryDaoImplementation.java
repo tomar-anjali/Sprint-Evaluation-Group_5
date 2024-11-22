@@ -1,25 +1,14 @@
 package com.evaluation.petshop.dao.implementation;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
->>>>>>> f479527e70758d1e07580cedb64cdd81f24dd895
-
 import org.springframework.stereotype.Repository;
 import com.evaluation.petshop.dao.PetCategoryDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.entity.PetCategory;
 import com.evaluation.petshop.repository.PetCategoryRepository;
 
-<<<<<<< HEAD
-
-	
-
-=======
 @Repository
 public class PetCategoryDaoImplementation implements PetCategoryDao {
 
@@ -35,9 +24,8 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 			throw new DataNotFoundException("Validation Failed");
 	}
 
-
 	@Override
-	public PetCategory  petCategoryById(int addressId) {
+	public PetCategory petCategoryById(int addressId) {
 		Optional<PetCategory> address = petCategoryRepository.findById(addressId);
 		if (address.isPresent())
 			return address.get();
@@ -45,7 +33,7 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 			throw new DataNotFoundException("Validation failed");
 
 	}
-	
+
 	@Override
 	public PetCategory updatePetCategory(int petId, PetCategory updatedPet) {
 		Optional<PetCategory> petOptional = petCategoryRepository.findById(petId);
@@ -64,5 +52,4 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 	public PetCategory savePetCategory(PetCategory petCategory) {
 		return petCategoryRepository.save(petCategory);
 	}
->>>>>>> f479527e70758d1e07580cedb64cdd81f24dd895
 }

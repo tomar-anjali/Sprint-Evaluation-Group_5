@@ -2,20 +2,15 @@ package com.evaluation.petshop.service.implementation;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-=======
-
 import com.evaluation.petshop.dao.PetCategoryDao;
 import com.evaluation.petshop.models.ResponseDto.PetCategoryResponseDto;
 import com.evaluation.petshop.models.dto.PetCategoryDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.models.entity.PetCategory;
->>>>>>> f479527e70758d1e07580cedb64cdd81f24dd895
 import com.evaluation.petshop.service.PetCategoryService;
 
 @Service
@@ -63,7 +58,7 @@ public class PetCategoryServiceImplementation implements PetCategoryService {
 
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
-	
+
 	@Override
 	public ResponseEntity<ResponseStructure<PetCategoryResponseDto>> getPetCategoryById(int addressId) {
 		PetCategory petCategory = petCategoryDao.petCategoryById(addressId);
@@ -79,25 +74,26 @@ public class PetCategoryServiceImplementation implements PetCategoryService {
 		return new ResponseEntity<ResponseStructure<PetCategoryResponseDto>>(response, HttpStatus.FOUND);
 
 	}
+
 	@Override
-    public ResponseEntity<ResponseStructure<PetCategoryResponseDto>> updatePetCategory(int petId, PetCategoryResponseDto petResponsedto) {
-        // Convert PetResponsedto to Pet entity for updating
-        PetCategory petToUpdate = new PetCategory();
-        petToUpdate.setCategoryId(petId);
-        petToUpdate.setName(petResponsedto.getName());
+	public ResponseEntity<ResponseStructure<PetCategoryResponseDto>> updatePetCategory(int petId,
+			PetCategoryResponseDto petResponsedto) {
+		// Convert PetResponsedto to Pet entity for updating
+		PetCategory petToUpdate = new PetCategory();
+		petToUpdate.setCategoryId(petId);
+		petToUpdate.setName(petResponsedto.getName());
 
-        
-        PetCategory updatedPet = petCategoryDao.updatePetCategory(petId, petToUpdate);
+		PetCategory updatedPet = petCategoryDao.updatePetCategory(petId, petToUpdate);
 
-        // Prepare the response DTO to send back to the client
-        PetCategoryResponseDto updatedPetResponsedto = new  PetCategoryResponseDto();
-        updatedPetResponsedto.setCategoryId(updatedPet.getCategoryId());
-        updatedPetResponsedto.setName(updatedPet.getName());
-      
-        ResponseStructure<PetCategoryResponseDto> response = new ResponseStructure<>();
-        response.setStatusCode(HttpStatus.OK.value());
-        response.setMessage("Pet updated successfully");
-        response.setData(updatedPetResponsedto);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+		// Prepare the response DTO to send back to the client
+		PetCategoryResponseDto updatedPetResponsedto = new PetCategoryResponseDto();
+		updatedPetResponsedto.setCategoryId(updatedPet.getCategoryId());
+		updatedPetResponsedto.setName(updatedPet.getName());
+
+		ResponseStructure<PetCategoryResponseDto> response = new ResponseStructure<>();
+		response.setStatusCode(HttpStatus.OK.value());
+		response.setMessage("Pet updated successfully");
+		response.setData(updatedPetResponsedto);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
 }
