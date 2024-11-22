@@ -17,8 +17,34 @@ import com.evaluation.petshop.service.PetService;
 public class PetServiceImplementation implements PetService {
 
 	@Autowired
-	PetDao petDao;
+	private PetDao petDao;
 
+	@Override
+	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getAllPets() {
+		List<Pet> pets = petDao.getAllPets();
+		List<PetResponseDto> petResponsedtos = pets.stream().map(data -> {
+			PetCategoryResponseDto petCategoryResponseDto = new PetCategoryResponseDto();
+			if (data.getPetCategory() != null) {
+				petCategoryResponseDto.setCategoryId(data.getPetCategory().getCategoryId());
+				petCategoryResponseDto.setName(data.getPetCategory().getName());
+			}
+			PetResponseDto petResponseDto = new PetResponseDto();
+			petResponseDto.setName(data.getName());
+			petResponseDto.setPetId(data.getPetId());
+			petResponseDto.setAge(data.getAge());
+			petResponseDto.setBreed(data.getBreed());
+			petResponseDto.setPrice(data.getPrice());
+			petResponseDto.setDescription(data.getDescription());
+			petResponseDto.setImageUrl(data.getImageUrl());
+			petResponseDto.setPetCategory(petCategoryResponseDto);
+			return petResponseDto;
+		}).collect(Collectors.toList());
+		ResponseStructure<List<PetResponseDto>> response = new ResponseStructure<>();
+		response.setStatusCode(HttpStatus.OK.value());
+		response.setMessage("Success");
+		response.setData(petResponsedtos);
+		return new ResponseEntity<ResponseStructure<List<PetResponseDto>>>(response, HttpStatus.FOUND);
+	}
 	@Override
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByCategory(int category) {
 		List<Pet> pets = petDao.getPetByCategory(category);
@@ -44,7 +70,6 @@ public class PetServiceImplementation implements PetService {
 		responseStructure.setStatusCode(HttpStatus.FOUND.value());
 		responseStructure.setMessage("Found");
 		responseStructure.setData(petResponseDto);
-
 		return new ResponseEntity<ResponseStructure<List<PetResponseDto>>>(responseStructure, HttpStatus.FOUND);
 	}
 }

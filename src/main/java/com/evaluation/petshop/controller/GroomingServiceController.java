@@ -14,12 +14,19 @@ import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
 import com.evaluation.petshop.models.dto.GroomingServiceDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.service.GroomingServiceService;
+import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
+import com.evaluation.petshop.models.dto.ResponseStructure;
+import com.evaluation.petshop.service.GroomingServiceService;
 
 @RequestMapping("/services")
 @RestController
 public class GroomingServiceController {
 	@Autowired
 	private GroomingServiceService groomingServiceService;
+
+	@GetMapping("/available")
+	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable() {
+		return groomingServiceService.getAllGroomingServiceAvailable();
 
 	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {

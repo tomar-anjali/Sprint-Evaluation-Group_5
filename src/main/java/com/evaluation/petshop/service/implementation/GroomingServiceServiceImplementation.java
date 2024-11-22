@@ -20,10 +20,26 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
 	private GroomingServiceDao groomingServiceDao;
 
 	@Override
+	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable() {
+		List<GroomingService> groomingServices = groomingServiceDao.getAllGroomingServicesAvailable();
+		List<GroomingServiceResponseDto> groomingServiceResponsedtos = groomingServices.stream()
+				.filter(i -> i.isAvailable()).map(data -> {
+					GroomingServiceResponseDto gro = new GroomingServiceResponseDto();
+					gro.setAvailable(data.isAvailable());
+					gro.setDescription(data.getDescription());
+					gro.setName(data.getName());
+					gro.setServiceId(data.getServiceId());
+					gro.setPrice(data.getPrice());
+					return gro;
+				}).collect(Collectors.toList());
+		ResponseStructure<List<GroomingServiceResponseDto>> response = new ResponseStructure<>();
+		response.setStatusCode(HttpStatus.FOUND.value());
+		response.setMessage("Success");
+		response.setData(groomingServiceResponsedtos);
+		return new ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>>(response, HttpStatus.FOUND);
+}
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {
-
 		List<GroomingService> groomingService = groomingServiceDao.getAllGroomingService();
-
 		if (!groomingService.isEmpty()) {
 			List<GroomingServiceResponseDto> groomingServiceResponseDto = groomingService.stream()
 					.map(groomingServices -> {

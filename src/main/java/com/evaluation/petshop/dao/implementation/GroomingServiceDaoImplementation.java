@@ -8,14 +8,19 @@ import com.evaluation.petshop.dao.GroomingServiceDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.entity.GroomingService;
 import com.evaluation.petshop.repository.GroomingServiceRepository;
-
 @Repository
-public class GroomingServiceDaoImplementation implements GroomingServiceDao {
+public class GroomingServiceDaoImplementation implements GroomingServiceDao{
 	@Autowired
 	private GroomingServiceRepository groomingServiceRepository;
 
 	@Override
-	public List<GroomingService> getAllGroomingService() {
+	public List<GroomingService> getAllGroomingServicesAvailable() {
+		List<GroomingService> groomingServices=groomingServiceRepository.findAllAvailableServices();
+		if(!groomingServices.isEmpty())return groomingServices;
+		else throw new DataNotFoundException("Validation Failed");
+
+	 @Override
+	  public List<GroomingService> getAllGroomingService() {
 		return groomingServiceRepository.findAll();
 	}
 
