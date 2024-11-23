@@ -14,27 +14,21 @@ import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
 import com.evaluation.petshop.models.dto.GroomingServiceDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.service.GroomingServiceService;
-<<<<<<< HEAD
-=======
 import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.service.GroomingServiceService;
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 
 @RequestMapping("/services")
 @RestController
 public class GroomingServiceController {
 	@Autowired
 	private GroomingServiceService groomingServiceService;
-
+}
 	@GetMapping("/available")
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable() {
 		return groomingServiceService.getAllGroomingServiceAvailable();
-<<<<<<< HEAD
 	}
 	
-=======
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 
 	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {

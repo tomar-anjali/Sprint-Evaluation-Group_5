@@ -79,4 +79,27 @@ public class VaccinationServiceImplementation implements VaccinationService {
 
 		return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 	}
+
+	@Override
+	public ResponseEntity<ResponseStructure<VaccinationResponseDto>> saveVaccination(VaccinationDto vaccinationDto) {
+		Vaccination vaccination = new Vaccination();
+        vaccination.setName(vaccinationDto.getName());
+        vaccination.setDescription(vaccinationDto.getDescription());
+        vaccination.setPrice(vaccinationDto.getPrice());
+        vaccination.setAvailable(vaccinationDto.isAvailable());
+        Vaccination vacc = vaccinationDao.save(vaccination);
+        
+        VaccinationResponseDto vaccinationResponseDto=new VaccinationResponseDto();
+        vaccinationResponseDto.setName(vacc.getName());
+        vaccinationResponseDto.setDescription(vacc.getDescription());
+        vaccinationResponseDto.setPrice(vacc.getPrice());
+        vaccinationResponseDto.setVaccinationId(vacc.getVaccinationId());
+        vaccinationResponseDto.setAvailable(vacc.isAvailable());
+        
+        ResponseStructure<VaccinationResponseDto> responseStructure=new ResponseStructure<>();
+        responseStructure.setStatusCode(HttpStatus.OK.value());
+        responseStructure.setMessage("Success");
+        responseStructure.setData(vaccinationResponseDto);
+        return new ResponseEntity<ResponseStructure<VaccinationResponseDto>>(responseStructure,HttpStatus.OK);
+	}
 }
