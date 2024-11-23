@@ -6,14 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-=======
 import com.evaluation.petshop.dao.VaccinationDao;
 import com.evaluation.petshop.models.ResponseDto.VaccinationResponseDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.models.dto.VaccinationDto;
 import com.evaluation.petshop.models.entity.Vaccination;
->>>>>>> 25747fc1e3c8d987677e4d88f77260c5ae3a00de
 import com.evaluation.petshop.service.VaccinationService;
 
 @Service

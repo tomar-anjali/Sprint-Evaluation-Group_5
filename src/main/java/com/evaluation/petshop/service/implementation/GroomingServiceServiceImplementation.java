@@ -2,24 +2,16 @@ package com.evaluation.petshop.service.implementation;
 
 import java.util.List;
 import java.util.stream.Collectors;
-<<<<<<< HEAD
 
-=======
->>>>>>> 25747fc1e3c8d987677e4d88f77260c5ae3a00de
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
 
-import com.evaluation.petshop.dao.GroomingServiceDao;
-import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
-=======
 import com.evaluation.petshop.dao.GroomingServiceDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
 import com.evaluation.petshop.models.dto.GroomingServiceDto;
->>>>>>> 25747fc1e3c8d987677e4d88f77260c5ae3a00de
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.models.entity.GroomingService;
 import com.evaluation.petshop.service.GroomingServiceService;
@@ -28,7 +20,6 @@ import com.evaluation.petshop.service.GroomingServiceService;
 public class GroomingServiceServiceImplementation implements GroomingServiceService {
 	@Autowired
 	private GroomingServiceDao groomingServiceDao;
-<<<<<<< HEAD
 
 	@Override
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable() {
@@ -49,8 +40,6 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
 		response.setData(groomingServiceResponsedtos);
 		return new ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>>(response, HttpStatus.FOUND);
 	}
-=======
->>>>>>> 25747fc1e3c8d987677e4d88f77260c5ae3a00de
 
 	@Override
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {

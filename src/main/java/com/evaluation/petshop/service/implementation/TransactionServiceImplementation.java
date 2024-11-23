@@ -1,11 +1,8 @@
 package com.evaluation.petshop.service.implementation;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 import java.util.stream.Collectors;
 
->>>>>>> 25747fc1e3c8d987677e4d88f77260c5ae3a00de
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +22,6 @@ import com.evaluation.petshop.service.TransactionService;
 public class TransactionServiceImplementation implements TransactionService {
 	@Autowired
 	private TransactionDao transactionDao;
-<<<<<<< HEAD
 
 	@Override
 	public ResponseEntity<ResponseStructure<TransactionResponseDto>> getTransactionById(int TransactionId) {
@@ -82,8 +78,6 @@ public class TransactionServiceImplementation implements TransactionService {
 		return new ResponseEntity<>(response, HttpStatus.FOUND);
 
 	}
-=======
->>>>>>> 25747fc1e3c8d987677e4d88f77260c5ae3a00de
 
 	@Override
 	public ResponseEntity<ResponseStructure<List<TransactionResponseDto>>> getAllTransactionList() {
