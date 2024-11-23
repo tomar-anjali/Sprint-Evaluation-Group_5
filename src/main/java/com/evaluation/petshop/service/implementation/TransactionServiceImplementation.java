@@ -2,12 +2,14 @@ package com.evaluation.petshop.service.implementation;
 
 import java.util.List;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.evaluation.petshop.dao.TransactionDao;
 import com.evaluation.petshop.models.ResponseDto.AddressResponseDto;
 import com.evaluation.petshop.models.ResponseDto.CustomerResponseDto;
@@ -78,8 +80,11 @@ public class TransactionServiceImplementation implements TransactionService {
 		return new ResponseEntity<>(response, HttpStatus.FOUND);
 
 	}
+<<<<<<< HEAD
 
 	@Override
+=======
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 	public ResponseEntity<ResponseStructure<List<TransactionResponseDto>>> getAllTransactionList() {
 		List<Transaction> list = transactionDao.getAllTransactionList();
 		List<TransactionResponseDto> transactionResponseDtos = list.stream().map(data -> {
@@ -122,7 +127,6 @@ public class TransactionServiceImplementation implements TransactionService {
 			transactionResponseDto.setTransactionDate(data.getTransactionDate());
 			transactionResponseDto.setPet(petResponseDto);
 			transactionResponseDto.setCustomer(customerResponseDto);
-
 			return transactionResponseDto;
 		}).collect(Collectors.toList());
 		ResponseStructure<List<TransactionResponseDto>> responseStructure = new ResponseStructure<>();

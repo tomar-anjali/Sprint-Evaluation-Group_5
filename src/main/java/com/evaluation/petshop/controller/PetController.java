@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+=======
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import org.springframework.web.bind.annotation.RestController;
-
 import com.evaluation.petshop.models.ResponseDto.PetResponseDto;
 import com.evaluation.petshop.models.dto.PetDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
@@ -24,16 +26,19 @@ import com.evaluation.petshop.service.PetService;
 public class PetController {
 	@Autowired
 	private PetService petService;
-
 	@GetMapping
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getAllPets() {
 		return petService.getAllPets();
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 	@GetMapping("/{category}")
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByCategory(@PathVariable int category) {
 		return petService.getPetByCategory(category);
 	}
+<<<<<<< HEAD
 
 	@GetMapping("/pets/{petId}")
 	public ResponseEntity<ResponseStructure<PetResponseDto>> getPetById(@PathVariable int petId) {
@@ -57,4 +62,6 @@ public class PetController {
 		return petService.getPetByName(name);
 	}
 
+=======
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 }
