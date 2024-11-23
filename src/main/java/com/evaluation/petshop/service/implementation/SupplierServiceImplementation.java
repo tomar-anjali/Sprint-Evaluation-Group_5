@@ -8,10 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.evaluation.petshop.dao.SupplierDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
+<<<<<<< HEAD
+import com.evaluation.petshop.models.dto.ResponseStructure;
+import com.evaluation.petshop.models.dto.SupplierDto;
+import com.evaluation.petshop.models.ResponseDto.AddressResponseDto;
+import com.evaluation.petshop.models.ResponseDto.SupplierResponseDto;
+=======
 import com.evaluation.petshop.models.dto.SupplierDto;
 import com.evaluation.petshop.models.ResponseDto.AddressResponseDto;
 import com.evaluation.petshop.models.ResponseDto.SupplierResponseDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import com.evaluation.petshop.models.entity.Supplier;
 import com.evaluation.petshop.service.SupplierService;
 
@@ -19,6 +26,10 @@ import com.evaluation.petshop.service.SupplierService;
 public class SupplierServiceImplementation implements SupplierService {
 	@Autowired
 	private SupplierDao supplierDao;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 	@Override
 	public ResponseEntity<ResponseStructure<List<SupplierDto>>> getAllSuppliers() {
 		List<Supplier> suppliers = supplierDao.getAllSuppliers();
