@@ -9,7 +9,8 @@ import com.evaluation.petshop.models.entity.PetFood;
 
 public interface PetFoodRepository extends JpaRepository<PetFood, Integer> {
 	@Query("select s from PetFood s where s.name = ?1")
-    List<PetFood> findByName(String name);
+	List<PetFood> findByName(String name);
+
 	@Query("SELECT p FROM PetFood p WHERE p.name = :name")
-    Optional<PetFood> findByFoodName(@Param("name") String name);
+	Optional<PetFood> findByFoodName(@Param("name") String name);
 }
