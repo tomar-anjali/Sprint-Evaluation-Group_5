@@ -16,6 +16,23 @@ public class PetFoodDaoImplementation implements PetFoodDao {
 	private PetFoodRepository petFoodRepository;
 
 	@Override
+	public List<PetFood> getPetFoodByName(String name) {
+		return petFoodRepository.findByName(name);
+	}
+
+	// Save Pet Food
+	@Override
+	public PetFood savePetFood(PetFood petFood) {
+		return petFoodRepository.save(petFood);
+	}
+
+	// Update Pet Food
+	@Override
+	public PetFood updatePetFood(PetFood petFood) {
+		return petFoodRepository.save(petFood);
+	}
+
+	@Override
 	public PetFood getPetFoodByFoodId(int foodId) {
 		Optional<PetFood> optionalPetFood = petFoodRepository.findById(foodId);
 		if (optionalPetFood.isPresent())
@@ -23,6 +40,7 @@ public class PetFoodDaoImplementation implements PetFoodDao {
 		else
 			throw new DataNotFoundException("Validation failed");
 	}
+
 	@Override
 	public List<PetFood> getAllPetFood() {
 		return petFoodRepository.findAll();

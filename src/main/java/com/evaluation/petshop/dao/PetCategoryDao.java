@@ -12,4 +12,5 @@ public interface PetCategoryDao {
 	PetCategory petCategoryById(int petCategoryId);
 
 	PetCategory savePetCategory(PetCategory petCategory);
+	List<PetCategory> getPetCategoryByName(String name);
 }
