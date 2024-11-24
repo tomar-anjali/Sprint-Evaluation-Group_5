@@ -19,5 +19,4 @@ public class EmployeeController {
 	public ResponseEntity<ResponseStructure<List<EmployeeResponseDto>>> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
-
 }
