@@ -20,8 +20,6 @@ public class EmployeeServiceImplementation implements EmployeeService{
 	@Override
 	public ResponseEntity<ResponseStructure<List<EmployeeResponseDto>>> getAllEmployees() {
 		List<Employee> employee = employeeDao.getAllEmployees();
-		
-		
 			List<EmployeeResponseDto> employeeDto = employee.stream().map(employees -> {
 				AddressResponseDto addressResponseDto = new AddressResponseDto();
 				if(employees.getAddress() != null) {
@@ -40,18 +38,12 @@ public class EmployeeServiceImplementation implements EmployeeService{
 				dto.setEmail(employees.getEmail());
 				dto.setHireDate(employees.getHireDate());
 				dto.setAddress(addressResponseDto);
-				
 				return dto;
-				
 			}).collect(Collectors.toList());
-			
 			ResponseStructure<List<EmployeeResponseDto>> response = new ResponseStructure<>();
 			response.setStatusCode(HttpStatus.FOUND.value());
 			response.setMessage("Success");
 			response.setData(employeeDto);
-				
 			return new ResponseEntity<>(response, HttpStatus.FOUND);
-				
 	}
-
 }

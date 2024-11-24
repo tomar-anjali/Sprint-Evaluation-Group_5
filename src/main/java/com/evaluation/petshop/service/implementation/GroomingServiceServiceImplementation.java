@@ -18,12 +18,9 @@ import com.evaluation.petshop.service.GroomingServiceService;
 public class GroomingServiceServiceImplementation implements GroomingServiceService {
 	@Autowired
 	private GroomingServiceDao groomingServiceDao;
-
 	@Override
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {
-
 		List<GroomingService> groomingService = groomingServiceDao.getAllGroomingService();
-
 		if (!groomingService.isEmpty()) {
 			List<GroomingServiceResponseDto> groomingServiceResponseDto = groomingService.stream()
 					.map(groomingServices -> {
@@ -35,39 +32,30 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
 						dto.setAvailable(groomingServices.isAvailable());
 						return dto;
 					}).collect(Collectors.toList());
-
 			ResponseStructure<List<GroomingServiceResponseDto>> responseStructure = new ResponseStructure<>();
 			responseStructure.setStatusCode(HttpStatus.OK.value());
 			responseStructure.setMessage("Success");
 			responseStructure.setData(groomingServiceResponseDto);
-
 			return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 		} else {
 			throw new DataNotFoundException("Validation failed");
 		}
-
 	}
-
 	@Override
 	public ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> getGroomingServiceById(int serviceId) {
 		GroomingService groomingService = groomingServiceDao.getGroomingServiceById(serviceId);
-
 		GroomingServiceResponseDto responseDto = new GroomingServiceResponseDto();
-
 		responseDto.setServiceId(groomingService.getServiceId());
 		responseDto.setName(groomingService.getName());
 		responseDto.setDescription(groomingService.getDescription());
 		responseDto.setPrice(groomingService.getPrice());
 		responseDto.setAvailable(groomingService.isAvailable());
-
 		ResponseStructure<GroomingServiceResponseDto> responseStructure = new ResponseStructure<>();
 		responseStructure.setStatusCode(HttpStatus.FOUND.value());
 		responseStructure.setMessage("Grooming Service fetched by Id");
 		responseStructure.setData(responseDto);
-
 		return new ResponseEntity<ResponseStructure<GroomingServiceResponseDto>>(responseStructure, HttpStatus.FOUND);
 	}
-
 	@Override
 	public ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> updateGroomingService(int serviceId,
 			GroomingServiceResponseDto groomingServiceDto) {
@@ -77,50 +65,37 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
 		groomingService.setDescription(groomingServiceDto.getDescription());
 		groomingService.setPrice(groomingServiceDto.getPrice());
 		groomingService.setAvailable(groomingServiceDto.isAvailable());
-
 		GroomingService grooming = groomingServiceDao.updateGroomingService(serviceId, groomingService);
 		GroomingServiceResponseDto groomingServiceResponseDto2 = new GroomingServiceResponseDto();
-
 		groomingServiceResponseDto2.setServiceId(grooming.getServiceId());
 		groomingServiceResponseDto2.setName(grooming.getName());
 		groomingServiceResponseDto2.setDescription(grooming.getDescription());
 		groomingServiceResponseDto2.setPrice(grooming.getPrice());
 		groomingServiceResponseDto2.setAvailable(grooming.isAvailable());
-
 		ResponseStructure<GroomingServiceResponseDto> responseStructure = new ResponseStructure<>();
 		responseStructure.setStatusCode(HttpStatus.OK.value());
 		responseStructure.setMessage("Grooming Service updated successfully");
 		responseStructure.setData(groomingServiceResponseDto2);
-
 		return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 	}
-
 	@Override
 	public ResponseEntity<ResponseStructure<GroomingServiceDto>> addGroomingService(
 			GroomingServiceDto groomingServiceDto) {
-		// Convert DTO to Entity
 		GroomingService groomingService = new GroomingService();
 		groomingService.setName(groomingServiceDto.getName());
 		groomingService.setDescription(groomingServiceDto.getDescription());
 		groomingService.setPrice(groomingServiceDto.getPrice());
 		groomingService.setAvailable(groomingServiceDto.isAvailable());
-
-		// Save the entity using DAO
 		GroomingService savedGroomingService = groomingServiceDao.addGroomingService(groomingService);
-
-		// Convert the saved entity back to DTO
 		GroomingServiceDto savedGroomingServiceDto = new GroomingServiceDto();
 		savedGroomingServiceDto.setName(savedGroomingService.getName());
 		savedGroomingServiceDto.setDescription(savedGroomingService.getDescription());
 		savedGroomingServiceDto.setPrice(savedGroomingService.getPrice());
 		savedGroomingServiceDto.setAvailable(savedGroomingService.isAvailable());
-
-		// Prepare the response structure
 		ResponseStructure<GroomingServiceDto> responseStructure = new ResponseStructure<>();
 		responseStructure.setStatusCode(HttpStatus.CREATED.value());
 		responseStructure.setMessage("Grooming service added successfully");
 		responseStructure.setData(savedGroomingServiceDto);
-
 		return new ResponseEntity<>(responseStructure, HttpStatus.CREATED);
 	}
 }
