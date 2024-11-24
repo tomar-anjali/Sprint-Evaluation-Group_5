@@ -11,4 +11,5 @@ public interface VaccinationDao {
 
 	Vaccination saveVaccination(Vaccination vaccination);
 
+	public Vaccination save(Vaccination vaccination);
 }

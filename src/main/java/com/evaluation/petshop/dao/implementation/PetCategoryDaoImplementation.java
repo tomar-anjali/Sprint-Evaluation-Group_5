@@ -2,10 +2,8 @@ package com.evaluation.petshop.dao.implementation;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.evaluation.petshop.dao.PetCategoryDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.entity.PetCategory;
@@ -25,15 +23,13 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 		else
 			throw new DataNotFoundException("Validation Failed");
 	}
-
 	 @Override
 	    public List<PetCategory> getPetCategoryByName(String name) {
 	        Optional<List<PetCategory>> petCategory = petCategoryRepository.findByNameContainingIgnoreCase(name);
 	        return petCategory.orElseThrow(() -> new DataNotFoundException("PetCategory not found with the name: " + name));
 	    }
-	
 	@Override
-	public PetCategory  petCategoryById(int addressId) {
+	public PetCategory petCategoryById(int addressId) {
 		Optional<PetCategory> address = petCategoryRepository.findById(addressId);
 		if (address.isPresent())
 			return address.get();
@@ -41,7 +37,6 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 			throw new DataNotFoundException("Validation failed");
 
 	}
-	
 	@Override
 	public PetCategory updatePetCategory(int petId, PetCategory updatedPet) {
 		Optional<PetCategory> petOptional = petCategoryRepository.findById(petId);

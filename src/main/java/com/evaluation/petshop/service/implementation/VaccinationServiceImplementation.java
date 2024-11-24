@@ -2,12 +2,10 @@ package com.evaluation.petshop.service.implementation;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.evaluation.petshop.dao.VaccinationDao;
 import com.evaluation.petshop.models.ResponseDto.VaccinationResponseDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
@@ -21,10 +19,10 @@ public class VaccinationServiceImplementation implements VaccinationService {
 	VaccinationDao vaccinationDao;
 	@Override
 	public ResponseEntity<ResponseStructure<List<VaccinationResponseDto>>> getAllVaccinations() {
-		List<Vaccination> vaccinationsList=vaccinationDao.getAllVaccinations();
-		
-		List<VaccinationResponseDto> vaccinationResponseDto= vaccinationsList.parallelStream().map(data->{
-			VaccinationResponseDto vacc=new VaccinationResponseDto();
+		List<Vaccination> vaccinationsList = vaccinationDao.getAllVaccinations();
+
+		List<VaccinationResponseDto> vaccinationResponseDto = vaccinationsList.parallelStream().map(data -> {
+			VaccinationResponseDto vacc = new VaccinationResponseDto();
 			vacc.setVaccinationId(data.getVaccinationId());
 			vacc.setName(data.getName());
 			vacc.setPrice(data.getPrice());
@@ -32,33 +30,34 @@ public class VaccinationServiceImplementation implements VaccinationService {
 //			vacc.setAvailable(data.get)
 			return vacc;
 		}).collect(Collectors.toList());
-		
-		ResponseStructure<List<VaccinationResponseDto>> responseStructure=new ResponseStructure<>();
+
+		ResponseStructure<List<VaccinationResponseDto>> responseStructure = new ResponseStructure<>();
 		responseStructure.setStatusCode(HttpStatus.FOUND.value());
 		responseStructure.setMessage("Found");
 		responseStructure.setData(vaccinationResponseDto);
-		return new ResponseEntity<ResponseStructure<List<VaccinationResponseDto>>>(responseStructure,HttpStatus.FOUND);
+		return new ResponseEntity<ResponseStructure<List<VaccinationResponseDto>>>(responseStructure, HttpStatus.FOUND);
 	}
+
 	@Override
 	public ResponseEntity<ResponseStructure<VaccinationResponseDto>> getVaccinationById(int id) {
-		Vaccination vaccination=vaccinationDao.getVaccinationById(id);
-			VaccinationResponseDto vaccinationDto=new VaccinationResponseDto();
-			vaccinationDto.setName(vaccination.getName());
-			vaccinationDto.setDescription(vaccination.getDescription());
-			vaccinationDto.setPrice(vaccination.getPrice());
-			vaccinationDto.setPrice(vaccination.getPrice());
-			vaccinationDto.setVaccinationId(id);
-			ResponseStructure<VaccinationResponseDto> res=new ResponseStructure<>();
-			res.setStatusCode(HttpStatus.OK.value());
-			res.setMessage("Found");
-			res.setData(vaccinationDto);
-			return new ResponseEntity<ResponseStructure<VaccinationResponseDto>>(res,HttpStatus.OK);
+		Vaccination vaccination = vaccinationDao.getVaccinationById(id);
+		VaccinationResponseDto vaccinationDto = new VaccinationResponseDto();
+		vaccinationDto.setName(vaccination.getName());
+		vaccinationDto.setDescription(vaccination.getDescription());
+		vaccinationDto.setPrice(vaccination.getPrice());
+		vaccinationDto.setPrice(vaccination.getPrice());
+		vaccinationDto.setVaccinationId(id);
+		ResponseStructure<VaccinationResponseDto> res = new ResponseStructure<>();
+		res.setStatusCode(HttpStatus.OK.value());
+		res.setMessage("Found");
+		res.setData(vaccinationDto);
+		return new ResponseEntity<ResponseStructure<VaccinationResponseDto>>(res, HttpStatus.OK);
 	}
+
 	@Override
 	public ResponseEntity<ResponseStructure<VaccinationResponseDto>> updateVaccinationById(int id,
 			VaccinationDto vaccinationDto) {
 		Vaccination existingVaccination = vaccinationDao.getVaccinationById(id);
-
 		existingVaccination.setName(vaccinationDto.getName());
 		existingVaccination.setDescription(vaccinationDto.getDescription());
 		existingVaccination.setPrice(vaccinationDto.getPrice());
@@ -79,5 +78,28 @@ public class VaccinationServiceImplementation implements VaccinationService {
 		responseStructure.setData(responseDto);
 
 		return new ResponseEntity<>(responseStructure, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<ResponseStructure<VaccinationResponseDto>> saveVaccination(VaccinationDto vaccinationDto) {
+		Vaccination vaccination = new Vaccination();
+        vaccination.setName(vaccinationDto.getName());
+        vaccination.setDescription(vaccinationDto.getDescription());
+        vaccination.setPrice(vaccinationDto.getPrice());
+        vaccination.setAvailable(vaccinationDto.isAvailable());
+        Vaccination vacc = vaccinationDao.save(vaccination);
+        
+        VaccinationResponseDto vaccinationResponseDto=new VaccinationResponseDto();
+        vaccinationResponseDto.setName(vacc.getName());
+        vaccinationResponseDto.setDescription(vacc.getDescription());
+        vaccinationResponseDto.setPrice(vacc.getPrice());
+        vaccinationResponseDto.setVaccinationId(vacc.getVaccinationId());
+        vaccinationResponseDto.setAvailable(vacc.isAvailable());
+        
+        ResponseStructure<VaccinationResponseDto> responseStructure=new ResponseStructure<>();
+        responseStructure.setStatusCode(HttpStatus.OK.value());
+        responseStructure.setMessage("Success");
+        responseStructure.setData(vaccinationResponseDto);
+        return new ResponseEntity<ResponseStructure<VaccinationResponseDto>>(responseStructure,HttpStatus.OK);
 	}
 }

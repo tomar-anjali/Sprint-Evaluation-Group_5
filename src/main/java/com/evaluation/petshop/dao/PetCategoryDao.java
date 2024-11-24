@@ -5,6 +5,7 @@ import java.util.List;
 import com.evaluation.petshop.models.entity.PetCategory;
 
 public interface PetCategoryDao {
+
 	List<PetCategory> getAllPetCategories();
 
 	PetCategory updatePetCategory(int petId, PetCategory updatedPet);
