@@ -32,24 +32,24 @@ public class PetController {
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByCategory(@PathVariable int category) {
 		return petService.getPetByCategory(category);
 	}
-	@GetMapping("/pets/{petId}")
+	@GetMapping("/{petId}")
 	public ResponseEntity<ResponseStructure<PetResponseDto>> getPetById(@PathVariable int petId) {
 		return petService.getPetById(petId);
 	}
 
-	@PutMapping("/pets/{petId}")
+	@PutMapping("/{petId}")
 	public ResponseEntity<ResponseStructure<PetResponseDto>> updatePet(@PathVariable int petId,
 			@RequestBody PetDto petRequestDto) {
 		return petService.updatePet(petId, petRequestDto);
 	}
 
-	@PostMapping("/pets/save")
+	@PostMapping("/save")
 	public ResponseEntity<ResponseStructure<PetResponseDto>> addPet(@RequestBody PetDto petRequestDto) {
 		System.out.println(petRequestDto);
 		return petService.addPet(petRequestDto);
 	}
 
-	@GetMapping("/pets/name/{name}")
+	@GetMapping("/name/{name}")
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByName(@PathVariable String name) {
 		return petService.getPetByName(name);
 	}
