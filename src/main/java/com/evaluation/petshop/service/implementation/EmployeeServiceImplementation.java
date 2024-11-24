@@ -14,9 +14,10 @@ import com.evaluation.petshop.models.entity.Employee;
 import com.evaluation.petshop.service.EmployeeService;
 
 @Service
-public class EmployeeServiceImplementation implements EmployeeService{
+public class EmployeeServiceImplementation implements EmployeeService {
 	@Autowired
 	private EmployeeDao employeeDao;
+
 	@Override
 	public ResponseEntity<ResponseStructure<List<EmployeeResponseDto>>> getAllEmployees() {
 		List<Employee> employee = employeeDao.getAllEmployees();
@@ -45,5 +46,6 @@ public class EmployeeServiceImplementation implements EmployeeService{
 			response.setMessage("Success");
 			response.setData(employeeDto);
 			return new ResponseEntity<>(response, HttpStatus.FOUND);
+		
 	}
 }

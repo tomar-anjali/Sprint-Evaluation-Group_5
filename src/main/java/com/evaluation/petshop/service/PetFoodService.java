@@ -7,9 +7,10 @@ import com.evaluation.petshop.models.dto.PetFoodDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 
 public interface PetFoodService {
-	ResponseEntity<ResponseStructure<PetFoodResponseDto>> getPetFoodByFoodId(int foodId);
-
-	ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>> getAllPetFood();
-	
 	ResponseEntity<ResponseStructure<PetFoodDto>> getPetFoodByFoodName(String foodName);
+	ResponseEntity<ResponseStructure<PetFoodResponseDto>> getPetFoodByFoodId(int foodId);
+	ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>> getAllPetFood();
+	public ResponseEntity<ResponseStructure<List<PetFoodResponseDto>>> getPetFoodByName(String name);
+	public ResponseEntity<ResponseStructure<PetFoodResponseDto>> savePetFood(PetFoodDto petFoodDto) ;
+	public ResponseEntity<ResponseStructure<PetFoodResponseDto>> updatePetFood(int foodId, PetFoodDto petFoodDto) ;
 }

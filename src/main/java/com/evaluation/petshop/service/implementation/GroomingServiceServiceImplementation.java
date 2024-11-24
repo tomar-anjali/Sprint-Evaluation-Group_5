@@ -19,6 +19,25 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
 	@Autowired
 	private GroomingServiceDao groomingServiceDao;
 	@Override
+	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable() {
+		List<GroomingService> groomingServices = groomingServiceDao.getAllGroomingServicesAvailable();
+		List<GroomingServiceResponseDto> groomingServiceResponsedtos = groomingServices.stream()
+				.filter(i -> i.isAvailable()).map(data -> {
+					GroomingServiceResponseDto gro = new GroomingServiceResponseDto();
+					gro.setAvailable(data.isAvailable());
+					gro.setDescription(data.getDescription());
+					gro.setName(data.getName());
+					gro.setServiceId(data.getServiceId());
+					gro.setPrice(data.getPrice());
+					return gro;
+				}).collect(Collectors.toList());
+		ResponseStructure<List<GroomingServiceResponseDto>> response = new ResponseStructure<>();
+		response.setStatusCode(HttpStatus.FOUND.value());
+		response.setMessage("Success");
+		response.setData(groomingServiceResponsedtos);
+		return new ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>>(response, HttpStatus.FOUND);
+	}
+   @Override
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {
 		List<GroomingService> groomingService = groomingServiceDao.getAllGroomingService();
 		if (!groomingService.isEmpty()) {
@@ -87,11 +106,14 @@ public class GroomingServiceServiceImplementation implements GroomingServiceServ
 		groomingService.setPrice(groomingServiceDto.getPrice());
 		groomingService.setAvailable(groomingServiceDto.isAvailable());
 		GroomingService savedGroomingService = groomingServiceDao.addGroomingService(groomingService);
+		// Save the entity using DAO
+		// Convert the saved entity back to DTO
 		GroomingServiceDto savedGroomingServiceDto = new GroomingServiceDto();
 		savedGroomingServiceDto.setName(savedGroomingService.getName());
 		savedGroomingServiceDto.setDescription(savedGroomingService.getDescription());
 		savedGroomingServiceDto.setPrice(savedGroomingService.getPrice());
 		savedGroomingServiceDto.setAvailable(savedGroomingService.isAvailable());
+		// Prepare the response structure
 		ResponseStructure<GroomingServiceDto> responseStructure = new ResponseStructure<>();
 		responseStructure.setStatusCode(HttpStatus.CREATED.value());
 		responseStructure.setMessage("Grooming service added successfully");
