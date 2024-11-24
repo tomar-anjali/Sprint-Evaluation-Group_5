@@ -8,10 +8,15 @@ import com.evaluation.petshop.models.dto.ResponseStructure;
 
 public interface GroomingServiceService {
 	ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService();
+
 	ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> getGroomingServiceById(int serviceId);
-  ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable();
+
+	ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable();
+
 	ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> updateGroomingService(int serviceId,
 			GroomingServiceResponseDto groomingServiceResponseDto);
+
 	public ResponseEntity<ResponseStructure<GroomingServiceDto>> addGroomingService(
 			GroomingServiceDto groomingServiceDto);
+
 }

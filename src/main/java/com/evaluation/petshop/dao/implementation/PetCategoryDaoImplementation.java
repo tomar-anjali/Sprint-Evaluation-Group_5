@@ -23,7 +23,11 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 		else
 			throw new DataNotFoundException("Validation Failed");
 	}
-
+	 @Override
+	    public List<PetCategory> getPetCategoryByName(String name) {
+	        Optional<List<PetCategory>> petCategory = petCategoryRepository.findByNameContainingIgnoreCase(name);
+	        return petCategory.orElseThrow(() -> new DataNotFoundException("PetCategory not found with the name: " + name));
+	    }
 	@Override
 	public PetCategory petCategoryById(int addressId) {
 		Optional<PetCategory> address = petCategoryRepository.findById(addressId);
@@ -33,7 +37,6 @@ public class PetCategoryDaoImplementation implements PetCategoryDao {
 			throw new DataNotFoundException("Validation failed");
 
 	}
-
 	@Override
 	public PetCategory updatePetCategory(int petId, PetCategory updatedPet) {
 		Optional<PetCategory> petOptional = petCategoryRepository.findById(petId);

@@ -17,7 +17,6 @@ public class SupplierDaoImplementation implements SupplierDao {
 	public List<Supplier> getAllSuppliers() {
 		return supplierRepository.findAll();
 	}
-
 	@Override
 	public Supplier getSupplierBySupplierId(int id) {
 		Optional<Supplier> res = supplierRepository.findById(id);

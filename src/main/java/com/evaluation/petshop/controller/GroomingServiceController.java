@@ -14,9 +14,6 @@ import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
 import com.evaluation.petshop.models.dto.GroomingServiceDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;
 import com.evaluation.petshop.service.GroomingServiceService;
-import com.evaluation.petshop.models.ResponseDto.GroomingServiceResponseDto;
-import com.evaluation.petshop.models.dto.ResponseStructure;
-import com.evaluation.petshop.service.GroomingServiceService;
 
 @RequestMapping("/services")
 @RestController

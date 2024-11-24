@@ -76,6 +76,8 @@ public class TransactionServiceImplementation implements TransactionService {
 		return new ResponseEntity<>(response, HttpStatus.FOUND);
 
 	}
+
+	@Override
 	public ResponseEntity<ResponseStructure<List<TransactionResponseDto>>> getAllTransactionList() {
 		List<Transaction> list = transactionDao.getAllTransactionList();
 		List<TransactionResponseDto> transactionResponseDtos = list.stream().map(data -> {

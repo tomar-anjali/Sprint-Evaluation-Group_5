@@ -5,13 +5,9 @@ import com.evaluation.petshop.models.entity.GroomingService;
 
 public interface GroomingServiceDao {
 	List<GroomingService> getAllGroomingServicesAvailable();
-
 	List<GroomingService> getAllGroomingService();
-
 	GroomingService getGroomingServiceById(int serviceId);
-
-	public GroomingService updateGroomingService(int serviceId, GroomingService groomingService);
-
-	public GroomingService addGroomingService(GroomingService groomingService);
+	GroomingService updateGroomingService(int serviceId, GroomingService groomingService);
+	GroomingService addGroomingService(GroomingService groomingService);
 
 }
