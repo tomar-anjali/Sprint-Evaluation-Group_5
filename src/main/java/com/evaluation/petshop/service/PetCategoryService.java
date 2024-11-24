@@ -15,4 +15,6 @@ public interface PetCategoryService {
 			PetCategoryResponseDto petCategorydto);
 
 	ResponseEntity<ResponseStructure<PetCategoryDto>> savePetCategory(PetCategoryDto petCategoryDto);
+
+	ResponseEntity<ResponseStructure<List<PetCategoryResponseDto>>> getPetCategoryByName(String name);
 }

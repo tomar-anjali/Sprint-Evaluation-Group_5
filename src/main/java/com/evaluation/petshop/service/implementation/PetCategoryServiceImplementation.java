@@ -1,5 +1,6 @@
 package com.evaluation.petshop.service.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,26 @@ import com.evaluation.petshop.service.PetCategoryService;
 public class PetCategoryServiceImplementation implements PetCategoryService {
 	@Autowired
 	private PetCategoryDao petCategoryDao;
+
+	@Override
+	public ResponseEntity<ResponseStructure<List<PetCategoryResponseDto>>> getPetCategoryByName(String name) {
+		List<PetCategory> petCategories = petCategoryDao.getPetCategoryByName(name);
+
+		List<PetCategoryResponseDto> responseDtos = new ArrayList<>();
+		for (PetCategory petCategory : petCategories) {
+			PetCategoryResponseDto dto = new PetCategoryResponseDto();
+			dto.setCategoryId(petCategory.getCategoryId());
+			dto.setName(petCategory.getName());
+			responseDtos.add(dto);
+		}
+
+		ResponseStructure<List<PetCategoryResponseDto>> response = new ResponseStructure<>();
+		response.setStatusCode(HttpStatus.OK.value());
+		response.setMessage("Pet Categories retrieved successfully");
+		response.setData(responseDtos);
+
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
 
 	@Override
 	public ResponseEntity<ResponseStructure<List<PetCategoryResponseDto>>> getAllPetCategories() {

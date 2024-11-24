@@ -1,6 +1,7 @@
 package com.evaluation.petshop.dao;
 
 import java.util.List;
+
 import com.evaluation.petshop.models.entity.Vaccination;
 
 public interface VaccinationDao {
@@ -9,4 +10,6 @@ public interface VaccinationDao {
 	public Vaccination getVaccinationById(int id);
 
 	Vaccination saveVaccination(Vaccination vaccination);
+
+	public Vaccination save(Vaccination vaccination);
 }

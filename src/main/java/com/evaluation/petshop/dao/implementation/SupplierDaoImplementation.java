@@ -1,10 +1,9 @@
 package com.evaluation.petshop.dao.implementation;
 
+import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.evaluation.petshop.dao.SupplierDao;
 import com.evaluation.petshop.exception.DataNotFoundException;
 import com.evaluation.petshop.models.entity.Supplier;
@@ -14,7 +13,10 @@ import com.evaluation.petshop.repository.SupplierRepository;
 public class SupplierDaoImplementation implements SupplierDao {
 	@Autowired
 	private SupplierRepository supplierRepository;
-
+	@Override
+	public List<Supplier> getAllSuppliers() {
+		return supplierRepository.findAll();
+	}
 	@Override
 	public Supplier getSupplierBySupplierId(int id) {
 		Optional<Supplier> res = supplierRepository.findById(id);

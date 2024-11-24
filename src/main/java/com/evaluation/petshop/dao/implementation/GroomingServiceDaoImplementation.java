@@ -15,7 +15,15 @@ public class GroomingServiceDaoImplementation implements GroomingServiceDao {
 	private GroomingServiceRepository groomingServiceRepository;
 
 	@Override
-	public List<GroomingService> getAllGroomingService() {
+	public List<GroomingService> getAllGroomingServicesAvailable() {
+		List<GroomingService> groomingServices=groomingServiceRepository.findAllAvailableServices();
+		if(!groomingServices.isEmpty())return groomingServices;
+		else throw new DataNotFoundException("Validation Failed");
+	}
+	
+
+	 @Override
+	  public List<GroomingService> getAllGroomingService() {
 		return groomingServiceRepository.findAll();
 	}
 
@@ -23,9 +31,7 @@ public class GroomingServiceDaoImplementation implements GroomingServiceDao {
 	public GroomingService getGroomingServiceById(int serviceId) {
 		Optional<GroomingService> optionalGroomingService = groomingServiceRepository.findById(serviceId);
 		return optionalGroomingService.orElseThrow(() -> new DataNotFoundException("Validation failed"));
-
 	}
-
 	@Override
 	public GroomingService updateGroomingService(int serviceId, GroomingService updatedGroomingService) {
 		Optional<GroomingService> groomingServiceOptional = groomingServiceRepository.findById(serviceId);
@@ -41,7 +47,6 @@ public class GroomingServiceDaoImplementation implements GroomingServiceDao {
 			throw new DataNotFoundException("Grooming Service found for update");
 		}
 	}
-
 	@Override
 	public GroomingService addGroomingService(GroomingService groomingService) {
 		return groomingServiceRepository.save(groomingService);

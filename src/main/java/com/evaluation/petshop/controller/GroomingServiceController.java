@@ -21,6 +21,11 @@ public class GroomingServiceController {
 	@Autowired
 	private GroomingServiceService groomingServiceService;
 
+	@GetMapping("/available")
+	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable() {
+		return groomingServiceService.getAllGroomingServiceAvailable();
+	}
+
 	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingService() {
 		return groomingServiceService.getAllGroomingService();

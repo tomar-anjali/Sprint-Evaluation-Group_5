@@ -11,9 +11,12 @@ public interface GroomingServiceService {
 
 	ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> getGroomingServiceById(int serviceId);
 
+	ResponseEntity<ResponseStructure<List<GroomingServiceResponseDto>>> getAllGroomingServiceAvailable();
+
 	ResponseEntity<ResponseStructure<GroomingServiceResponseDto>> updateGroomingService(int serviceId,
 			GroomingServiceResponseDto groomingServiceResponseDto);
 
 	public ResponseEntity<ResponseStructure<GroomingServiceDto>> addGroomingService(
 			GroomingServiceDto groomingServiceDto);
+
 }

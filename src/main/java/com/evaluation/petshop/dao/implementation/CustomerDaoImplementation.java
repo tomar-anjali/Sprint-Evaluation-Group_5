@@ -18,7 +18,6 @@ public class CustomerDaoImplementation implements CustomerDao {
 	public Customer getCustomerById(int customerId) {
 		Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
 		return optionalCustomer.orElseThrow(() -> new DataNotFoundException("Validation Failed"));
-
 	}
 
 	@Override

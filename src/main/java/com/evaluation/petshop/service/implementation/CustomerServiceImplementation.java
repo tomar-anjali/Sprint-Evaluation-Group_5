@@ -135,6 +135,7 @@ public class CustomerServiceImplementation implements CustomerService {
 				addressResponseDto.setZipCode(data.getAddress().getZipCode());
 			}
 			CustomerResponseDto dtos = new CustomerResponseDto();
+			dtos.setCustomerId(data.getCustomerId());
 			dtos.setFirstName(data.getFirstName());
 			dtos.setLastName(data.getLastName());
 			dtos.setEmail(data.getEmail());
