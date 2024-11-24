@@ -18,16 +18,10 @@ public class GroomingServiceDaoImplementation implements GroomingServiceDao{
 		List<GroomingService> groomingServices=groomingServiceRepository.findAllAvailableServices();
 		if(!groomingServices.isEmpty())return groomingServices;
 		else throw new DataNotFoundException("Validation Failed");
-<<<<<<< HEAD
 	}
 	
-	@Override
-	public List<GroomingService> getAllGroomingService() {
-=======
-
 	 @Override
 	  public List<GroomingService> getAllGroomingService() {
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 		return groomingServiceRepository.findAll();
 	}
 

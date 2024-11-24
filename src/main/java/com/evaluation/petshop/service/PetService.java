@@ -1,13 +1,7 @@
 package com.evaluation.petshop.service;
 
 import java.util.List;
-<<<<<<< HEAD
-
 import org.springframework.http.ResponseEntity;
-
-=======
-import org.springframework.http.ResponseEntity;
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import com.evaluation.petshop.models.ResponseDto.PetResponseDto;
 import com.evaluation.petshop.models.dto.PetDto;
 import com.evaluation.petshop.models.dto.ResponseStructure;

@@ -1,12 +1,7 @@
 package com.evaluation.petshop.dao.implementation;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
-=======
-import java.util.Optional;
-import java.util.List;
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.evaluation.petshop.dao.TransactionDao;
@@ -26,11 +21,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 		else
 			throw new DataNotFoundException("Validation Failed");
 	}
-<<<<<<< HEAD
-	private TransactionRepository repository;
 
-=======
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 	@Override
 	public List<Transaction> getAllTransactionList() {
 		return transactionRepository.findAll();
