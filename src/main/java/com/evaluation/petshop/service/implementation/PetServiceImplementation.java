@@ -3,19 +3,13 @@ package com.evaluation.petshop.service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-<<<<<<< HEAD
 
-=======
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
 
 import com.evaluation.petshop.dao.PetCategoryDao;
-=======
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 import com.evaluation.petshop.dao.PetDao;
 import com.evaluation.petshop.models.ResponseDto.PetCategoryResponseDto;
 import com.evaluation.petshop.models.ResponseDto.PetResponseDto;
@@ -59,11 +53,6 @@ public class PetServiceImplementation implements PetService {
 		response.setData(petResponsedtos);
 		return new ResponseEntity<ResponseStructure<List<PetResponseDto>>>(response, HttpStatus.FOUND);
 	}
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 06c62538e303723f30a1cd6de47608f36fa3ca56
 	@Override
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByCategory(int category) {
 		List<Pet> pets = petDao.getPetByCategory(category);
