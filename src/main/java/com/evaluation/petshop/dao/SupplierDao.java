@@ -6,5 +6,4 @@ import com.evaluation.petshop.models.entity.Supplier;
 public interface SupplierDao {
 	List<Supplier> getAllSuppliers();
 	Supplier getSupplierBySupplierId(int id);
-
 }

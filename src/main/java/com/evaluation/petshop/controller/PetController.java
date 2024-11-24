@@ -32,7 +32,6 @@ public class PetController {
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByCategory(@PathVariable int category) {
 		return petService.getPetByCategory(category);
 	}
-
 	@GetMapping("/pets/{petId}")
 	public ResponseEntity<ResponseStructure<PetResponseDto>> getPetById(@PathVariable int petId) {
 		return petService.getPetById(petId);
@@ -54,5 +53,4 @@ public class PetController {
 	public ResponseEntity<ResponseStructure<List<PetResponseDto>>> getPetByName(@PathVariable String name) {
 		return petService.getPetByName(name);
 	}
-
 }
