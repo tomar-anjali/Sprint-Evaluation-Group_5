@@ -43,8 +43,13 @@ public class CustomerController {
 		return customerService.getCustomerByFirstAndLastName(first_name, last_name);
 	}
 
-	@GetMapping()
+	@GetMapping
 	public ResponseEntity<ResponseStructure<List<CustomerResponseDto>>> getAllCustomer() {
 		return customerService.getAllCustomer();
 	}
+//	@GetMapping("/customer/name/{name}")
+//	public ResponseEntity<ResponseStructure<List<CustomerResponseDto>>> getCustomerByName(@PathVariable String name) {
+////		System.out.println(name);
+//	    return customerService.getCustomerByName(name);
+//	}
 }

@@ -15,4 +15,6 @@ public interface CustomerDao {
 	Customer saveCustomer(Customer customer);
 
 	List<Customer> getAllCustomer();
+	
+	//List<Customer> getCustomerByName(String name);
 }

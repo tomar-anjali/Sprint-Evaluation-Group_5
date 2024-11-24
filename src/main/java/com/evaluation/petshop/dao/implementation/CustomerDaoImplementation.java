@@ -54,4 +54,12 @@ public class CustomerDaoImplementation implements CustomerDao {
 	public List<Customer> getAllCustomer() {
 		return customerRepository.findAll();
 	}
+//	@Override
+//	public List<Customer> getCustomerByName(String name) {
+////		System.out.println(name);
+//	    Optional<List<Customer>> optionalPet = customerRepository.findByNameIgnoreCase(name.trim());
+//	   
+//	    List<Customer> list = optionalPet.orElseThrow(() -> new DataNotFoundException("Pet not found with name: " + name));
+//	    return list;
+//	}
 }

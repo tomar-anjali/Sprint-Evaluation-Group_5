@@ -20,4 +20,6 @@ public interface CustomerService {
 
 	ResponseEntity<ResponseStructure<List<CustomerResponseDto>>> getAllCustomer();
 
+	//ResponseEntity<ResponseStructure<List<CustomerResponseDto>>> getCustomerByName(String name);
+
 }

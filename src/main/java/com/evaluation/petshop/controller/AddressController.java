@@ -19,9 +19,9 @@ public class AddressController {
 	private AddressService addressService;
 
 	@GetMapping
-   public ResponseEntity<ResponseStructure<List<AddressResponseDto>>>  getAllAddressesList() {
-       return  addressService.getAllAddressesList();
-   }
+	public ResponseEntity<ResponseStructure<List<AddressResponseDto>>> getAllAddressesList() {
+		return addressService.getAllAddressesList();
+	}
 
 	@GetMapping("/{addressId}")
 	public ResponseEntity<ResponseStructure<AddressResponseDto>> getAddressById(@PathVariable int addressId) {
