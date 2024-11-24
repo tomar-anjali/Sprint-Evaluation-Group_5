@@ -2,6 +2,8 @@ package com.evaluation.petshop.models.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class PetFood {
 	private double price;
 
 	// To avoid redundancy (Table)
+	@JsonIgnore
 	@ManyToMany(mappedBy = "petfood")
 	private List<Pet> pets;
 }
